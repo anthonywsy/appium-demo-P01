@@ -28,17 +28,38 @@ class AndroidAppTests(unittest.TestCase):
 
     def test_androidapp(self):
         el = self.driver.find_element_by_name("Hello World, Click Me!")
-        el.click()
+        #el.click()
         
         e2 = self.driver.find_element_by_name("Click to login page")
         e2.click()
         
         textfields = self.driver.find_elements_by_class_name("android.widget.EditText")
-        textfields[0].send_keys("Appium User")
-        textfields[1].send_keys("someone@appium.io")
+        #textfields[0].send_keys("Appium User")
+        #textfields[1].send_keys("someone@appium.io")
        
+        #self.assertEqual('Appium User', textfields[0].text)
+        #error:self.assertEqual('someone@appium.io', textfields[1].text)
+        
         e3 = self.driver.find_element_by_name("Login")
         e3.click()
+        
+        gallery1 = self.driver.find_elements_by_class_name("android.widget.Gallery")
+        #self.driver.scroll(gallery1[len(gallery1)-1],gallery1[0])
+        #error:self.driver.swipe(0,0,100,0,0)
+        #error:self.driver.scroll(gallery1[0],gallery1[1])
+        #self.driver.execute_script("mobile: scroll", {"direction": 'right'})
+        
+        #self.driver.execute_script("mobile: scroll", {"direction": 'right', 'element': gallery1})
+        #self.driver.execute_script("mobile: scroll", {"direction": "right", element: gallery1})
+        #self.driver.execute_script("mobile: scroll", {"direction": "down", element: gallery1.getAttribute("id")})
+        img1 = self.driver.find_elements_by_class_name("android.widget.ImageView")
+        #img1[0].click()
+        gallery1[0].click()
+        #self.driver.scroll(img1[0],img1[len(img1)-1])
+        #self.driver.scroll(img1[len(img1)-1],img1[0])
+        self.driver.scroll(img1[1],img1[0])
+        gallery1[0].click()
+        #img1[1].click()
         
         time.sleep(3)
         
